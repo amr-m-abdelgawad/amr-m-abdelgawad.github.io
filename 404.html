@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to Devctl</title>
+  <script>
+    // GitHub Pages paths are case-sensitive. The project site lives at /Devctl/
+    // after the repository rename. Any other casing of that name, including the
+    // old /devctl/ address, lands here and is sent on with the rest of the path.
+    (function () {
+      var path = location.pathname
+      var match = /^\/(devctl)(?=\/|$)/i.exec(path)
+      if (!match || match[1] === "Devctl") return
+      var rest = path.slice(match[1].length + 1)
+      location.replace("/Devctl" + rest + location.search + location.hash)
+    })()
+  </script>
+</head>
+<body>
+  <p><a id="docs" href="https://amr-m-abdelgawad.github.io/Devctl/">Devctl documentation</a></p>
+  <script>
+    var link = document.getElementById("docs")
+    var path = location.pathname
+    var match = /^\/(devctl)(?=\/|$)/i.exec(path)
+    if (link && match && match[1] !== "Devctl") {
+      link.href = "/Devctl" + path.slice(match[1].length + 1) + location.search + location.hash
+    }
+  </script>
+</body>
+</html>
